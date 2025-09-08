@@ -9,41 +9,109 @@
     --altura-aside: 400px;
     --altura-main: 400px;
     --altura-footer: 250px;
+    --altura-imagen: 80px
     /* Anchos */
     --ancho-header: 2000px;
-    --ancho-aside: 200px;
+    --ancho-aside: 800px;
     --ancho-main: 1700px;
     --ancho-footer: 2000px;
+    --ancho-imagen:80px;
     /* Colores */
     --fondo-principal: #ecd165;
-    --color-header: #4332ff;
-    --color-aside: #57f178;
-    --color-main: #f35232;
+    --fondo-productos: #ffff;
+    --color-header: #FFE6EA;
+    --color-aside: #E0BFB8;
+    --color-main: #F33A6A;
     --color-footer: #dd5ef7; 
 }
 body{
     background-color: var(--fondo-principal);
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px auto 100px;
+    grid-template-areas: 
+    "header header header"
+    "aside main main"
+    "footer footer footer";
+    height: 100vh;
 }
 header{
-    height: var(--altura-header);
-    width: var(--ancho-header);
     background-color: var(--color-header);
-
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 20px;
+}
+header div img {
+    height: var(--altura-imagen) ;
+    width: var(--ancho-imagen);
+    border-radius: 50px;
+    border: solid 2px #000;
+}
+header div nav ul {
+    display: flex;
+    gap: 20px;
+}
+header div nav ul li {
+    list-style: none;
+    padding: 25px;
 }
 aside{
-    height: var(--altura-aside);
     width: var(--ancho-aside);
     background-color: var(--color-aside);
+    grid-area: aside;
+    padding: 50px;
+    width: var(--ancho-aside);
+}
+aside h2 {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+aside p{
+    padding: 10px;
+    text-align: justify;
 }
 main{
-    height: var(--altura-main);
-    width: var(--ancho-main);
     background-color: var(--color-main);
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 1fr 1fr;
+    grid-template-areas: 
+    "titulo titulo titulo";
+    height: 78.7 vh;
+    padding-left: 70px;
 }
+main div {
+    height: 180px;
+    width: 300px;
+    background-color: var(--fondo-productos);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+main h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    grid-area: titulo;
+}
+
+main div img {
+    margin-left: 15px;
+    height: 120px;
+    width: 100px;
+}
+
 footer{
-    height: var(--altura-footer);
-    width: var(--ancho-footer);
     background-color: var(--color-footer);
+    grid-area: footer;
 }
